@@ -4,7 +4,7 @@ require_once("../cabecalho.php");
 
     <h3>Gerenciamento de Clientes</h3>
 
-    <a href="inserir_cliente.php" class="btn btn-primary mt-3">Adicionar Cliente </a>
+    <a href="inserir_cliente.php" <i class="bi bi-plus-circle btn btn-primary mt-3"</i> Clientes </a>
 
     <table class="mt-3 table table-hover table-striped">
         <thead>
