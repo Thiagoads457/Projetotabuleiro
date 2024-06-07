@@ -2,7 +2,7 @@
 require_once("../cabecalho.php");
 ?>
 
-<h3>Alterar Jogos</h3>
+<h3><i class="bi bi-arrow-repeat"></i>Alterar Jogos</h3>
 <form action="" method="POST">
     <div class="row">
         <div class="col">

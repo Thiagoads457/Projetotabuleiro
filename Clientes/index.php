@@ -6,7 +6,8 @@ require_once("../cabecalho.php");
 
     <a href="inserir_cliente.php" <i class="bi bi-plus-circle btn btn-primary mt-3"</i> Clientes </a>
 
-    <table class="mt-3 table table-hover table-striped">
+    <table class="mt-4 table table-hover table-striped" style="margin-left: 10em;">
+
         <thead>
             <tr>
                 <th>Nome</th>
