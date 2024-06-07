@@ -10,9 +10,9 @@ require_once("../cabecalho.php");
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>E-mail</th>
                 <th>Endereço</th>
                 <th>Telefone</th>
-                <th>E-mail</th>
             </tr>
         </thead>
         <tbody>
@@ -22,12 +22,12 @@ require_once("../cabecalho.php");
             ?>
             <tr>
                 <td><?= $l['nome']?></td>
+                <td><?= $l['email']?></td>
                 <td><?= $l['endereco']?></td>
                 <td><?= $l['telefone']?></td>
-                <td><?= $l['email']?></td>
                 <td>
-                    <a href="alterar_cliente.php" class="btn btn-warning">Alterar</a>
-                    <a href="excluir_cliente.php" class="btn btn-danger">Excluir</a>
+                    <a href="alterar_cliente.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
+                    <a href="excluir_cliente.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
                 </td>
             </tr>
             <?php
