@@ -1,45 +1,51 @@
 <?php
 require_once("../cabecalho.php");
 ?>
+    <div class="row">
+        <div class="col">
+            <h3>Gerenciamento de Clientes</h3>
+        </div>
+    </div>
 
-    <h3>Gerenciamento de Clientes</h3>
+    <div class="row">
+        <div class="col">
+            <a href="inserir_cliente.php" <i class="bi bi-plus-circle btn btn-primary mt-3"</i> Clientes </a>
+        </div>
+    </div>
 
-    <a href="inserir_cliente.php" <i class="bi bi-plus-circle btn btn-primary mt-3"</i> Clientes </a>
+    <div class="row">
+        <div class="col">
+            <table class="table table-responsive table-hover table-striped mt-4">
 
-    <table class="mt-4 table table-hover table-striped" style="margin-left: 10em;">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        #$linhas = retornarProdutos();
+                        #while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
+                    ?>
+                    <tr>
+                        <td><?= $l['nome']?></td>
+                        <td><?= $l['email']?></td>
+                        <td>
+                            <a href="alterar_cliente.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
+                            <a href="excluir_cliente.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
+                        </td>
+                    </tr>
+                    <?php
+                        #}
+                    ?>
+                    
 
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Endereço</th>
-                <th>Telefone</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                #$linhas = retornarProdutos();
-                #while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
-            ?>
-            <tr>
-                <td><?= $l['nome']?></td>
-                <td><?= $l['email']?></td>
-                <td><?= $l['endereco']?></td>
-                <td><?= $l['telefone']?></td>
-                <td>
-                    <a href="alterar_cliente.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
-                    <a href="excluir_cliente.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
-                </td>
-            </tr>
-            <?php
-                #}
-            ?>
-            
+                </tbody>
 
-        </tbody>
-
-    </table>
-
+            </table>
+        </div>
+    </div>
 
 <?php
     require_once("../rodape.html");
