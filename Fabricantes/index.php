@@ -28,8 +28,8 @@ require_once("../cabecalho.php");
             <td><?= $l['pais'] ?></td>
             <td><?= $l['ano'] ?></td>
             <td>
-                <a href="alterar_jogo.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
-                <a href="excluir_jogo.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
+                <a href="alterar_fabricante.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
+                <a href="excluir_fabricante.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
             </td>
         </tr>
         <?php
