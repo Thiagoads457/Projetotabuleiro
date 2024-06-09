@@ -1,26 +1,46 @@
 <?php
 require_once("../cabecalho.php");
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    session_start();
+    $_SESSION['id'] = $id;
+} else
+    $id = $_SESSION['id'];
+if ($_POST) {
+    $nome = $_POST['nome'];
+    $pais = $_POST['pais'];
+    $ano = $_POST['ano'];
+    if ($nome != "" && $pais != "" && $ano != "") {
+        if (alterarFabricante($nome, $pais, $ano, $_SESSION['id']))
+            echo "Registro inserido com sucesso!";
+        else
+            echo "Erro ao inserir o registro!";
+    } else {
+        echo "Preencha todos os campos!";
+    }
+}
+$dados = consultarFabricanteId($id);
 ?>
 
-<h3>Alterar Fabricante</h3>
+<h3>Inserir Fabricante</h3>
 <form action="" method="POST">
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" placeholder="Nome do Fabricante" aria-label="Nome do Fabricante">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Fabricante" value="<?= $dados['nome'] ?>">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="País de Origem" aria-label="País de Origem">
+            <input type="text" class="form-control" id="pais" name="pais" placeholder="País de Origem" value="<?= $dados['nome'] ?>">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Ano de Fundação" aria-label="Ano de Fundação">
+            <input type="text" class="form-control" id="ano" name="ano" placeholder="Ano de Fundação" value="<?= $dados['nome'] ?>">
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-success mt-3">Alterar</button>
+            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
         </div>
     </div>
-
 </form>
 <?php
+
 
 require_once("../rodape.html");

@@ -8,7 +8,7 @@ require_once("../cabecalho.php");
 
 
 
-<table class="mt-4 table table-hover table-striped" style="margin-left: -40px;">
+<table class="mt-4 table table-hover table-striped">
 
 
     <thead>
@@ -20,20 +20,20 @@ require_once("../cabecalho.php");
     </thead>
     <tbody>
         <?php
-        #$linhas = retornarProdutos();
-        #while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
+        $linhas = retornarfabricante();
+        while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
         ?>
         <tr>
             <td><?= $l['nome'] ?></td>
             <td><?= $l['pais'] ?></td>
             <td><?= $l['ano'] ?></td>
             <td>
-                <a href="alterar_fabricante.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
-                <a href="excluir_fabricante.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
+                <a href="alterar_fabricante.php?id=<?= $l['id'] ?>" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
+                <a href="excluir_fabricante.php?id=<?= $l['id'] ?>" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
             </td>
         </tr>
         <?php
-        #}
+        }
         ?>
 
 

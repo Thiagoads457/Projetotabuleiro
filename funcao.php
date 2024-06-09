@@ -193,8 +193,103 @@
         }
     }
 
+     //Função que realiza a exclusão de um produto
+     function excluirEvento($id){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "DELETE FROM eventos  WHERE id = :id";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            //Executo a consulta, retornando o seu resultado
+            return $stmt->execute();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+
+    }
+
+
+    function retornarFabricante(){
+        try {
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "SELECT * FROM fabricantes";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Executo a consulta, retornando o seu resultado
+            return $conexao->query($sql);
+        } catch (Exception $e) {
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
+
+    //Função que realiza a inserção de um produto
+    function inserirFabricante($nome, $pais, $ano){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "INSERT INTO fabricantes (nome, pais, ano)VALUES (:nome, :pais, :ano)";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->bindValue(":data", $pais);
+            $stmt->bindValue(":local", $ano);
+            
+            //Executo a consulta, retornando o seu resultado
+            return $stmt->execute();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
+
+    //Para poder alterar ou excluir um registro, precisamos consultar o registro pela sua chave primária (id)
+    function consultarFabricanteId($id){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "SELECT * FROM fabricantes WHERE id = :id";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            //Executo a consulta
+            $stmt->execute();
+            //Retorno o registro já em formato de ARRAY
+            return $stmt->fetch();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
+
+    //Função que realiza a alteração de um produto
+    function alterarFabricante($nome, $pais, $ano,$id){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "UPDATE fabricantes SET nome = :nome, pais = :pais, ano = :ano WHERE id = :id";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->bindValue(":data", $pais);
+            $stmt->bindValue(":local", $ano);
+            $stmt->bindValue(":id", $id);
+            //Executo a consulta, retornando o seu resultado
+            return $stmt->execute();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
     //Função que realiza a exclusão de um produto
-    function excluirEvento($id){
+    function excluirFabricante($id){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
             $sql = "DELETE FROM eventos  WHERE id = :id";
