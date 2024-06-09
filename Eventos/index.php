@@ -13,27 +13,27 @@ require_once("../cabecalho.php");
 
     <thead>
         <tr>
-            <th>Evento</th>
+            <th>Nome</th>
             <th>Data</th>
             <th>Local</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        #$linhas = retornarProdutos();
-        #while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
+        $linhas = retornarEvento();
+        while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
         ?>
         <tr>
-            <td><?= $l['evento'] ?></td>
+            <td><?= $l['nome'] ?></td>
             <td><?= $l['data'] ?></td>
             <td><?= $l['local'] ?></td>
             <td>
-                <a href="alterar_evento.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
-                <a href="excluir_evento.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
+                <a href="alterar_evento.php?id=<?= $l['id'] ?>" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
+                <a href="excluir_evento.php?id=<?= $l['id'] ?>" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
             </td>
         </tr>
         <?php
-        #}
+        }
         ?>
 
 

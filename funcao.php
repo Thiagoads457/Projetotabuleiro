@@ -1,5 +1,4 @@
 
-
 <?php
 
     //Função para conexão com o banco de dados
@@ -118,6 +117,104 @@
 
 
 
+    function retornarEvento(){
+        try {
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "SELECT * FROM eventos";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Executo a consulta, retornando o seu resultado
+            return $conexao->query($sql);
+        } catch (Exception $e) {
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
+
+    //Função que realiza a inserção de um produto
+    function inserirEvento($nome, $data, $local){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "INSERT INTO eventos (nome, data, local)VALUES (:nome, :data, :local)";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->bindValue(":data", $data);
+            $stmt->bindValue(":local", $local);
+            
+            //Executo a consulta, retornando o seu resultado
+            return $stmt->execute();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
+
+    //Para poder alterar ou excluir um registro, precisamos consultar o registro pela sua chave primária (id)
+    function consultarEventoId($id){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "SELECT * FROM eventos WHERE id = :id";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            //Executo a consulta
+            $stmt->execute();
+            //Retorno o registro já em formato de ARRAY
+            return $stmt->fetch();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
+
+    //Função que realiza a alteração de um produto
+    function alterarEvento($nome, $data, $local,$id){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "UPDATE eventos SET nome = :nome, data = :data, local = :local WHERE id = :id";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->bindValue(":data", $data);
+            $stmt->bindValue(":local", $local);
+            $stmt->bindValue(":id", $id);
+            //Executo a consulta, retornando o seu resultado
+            return $stmt->execute();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+    }
+
+    //Função que realiza a exclusão de um produto
+    function excluirEvento($id){
+        try{ 
+            //Defino uma variável para declarar o SQL a ser executado
+            $sql = "DELETE FROM eventos  WHERE id = :id";
+            //Realizo a conexão com o banco de dados
+            $conexao = conectarBanco();
+            //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            //Executo a consulta, retornando o seu resultado
+            return $stmt->execute();
+        } catch (Exception $e){
+            //Caso aconteça algum erro, retorno o valor 0
+            return 0;
+        }
+
+
+
+
+
+
 
 
     #INSERT INTO categoria (descricao) VALUES ("Categoria 1"), ("Categoria 2"), ("Categoria 3")
@@ -138,3 +235,5 @@
             return 0;
         }
     }
+
+}
