@@ -20,14 +20,14 @@ $dados = consultarClienteId($id);
     <div class="row g-3">
         <div class="col-md-8">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" name="nome" value="<?= $dados['nome'] ?>" disabled>
+            <input type="text" class="form-control" id="nome" name="nome" value="<?= $dados['nome'] ?>" disabled>
         </div>
 
     </div>
     <form class="row g-3">
         <div class="col-md-8">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" value="<?= $dados['email'] ?>" disabled>
+            <input type="email" class="form-control" id="email" name="email" value="<?= $dados['email'] ?>" disabled>
         </div>
 
         <div class="col-8">
@@ -45,11 +45,16 @@ $dados = consultarClienteId($id);
         <div class="row">
             <div class="col-md-4">
                 <label for="cep" class="form-label"></label>
-                <input type="text" class="form-control" name="cep" placeholder="CEP" value="<?= $dados['cep'] ?>" disabled>
+                <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" value="<?= $dados['cep'] ?>" disabled>
             </div>
             <div class="col-md-4">
                 <label for="estado" class="form-label"></label>
-                <input type="text" class="form-control" name="estado" placeholder="Estado" value="<?= $dados['estado'] ?>" disabled>
+                <input type="text" class="form-control" id="estado name="estado" placeholder="Estado" value="<?= $dados['estado'] ?>" disabled>
+            </div>
+            <div class="row">
+            <div class="col-md-4">
+                <label for="telefone" class="form-label"></label>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="CEP" value="<?= $dados['telefone'] ?>" disabled>
             </div>
             <div class="row">
                 <div class="col">

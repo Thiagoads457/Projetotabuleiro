@@ -14,8 +14,9 @@ if ($_POST) {
     $cidade = $_POST['cidade'];
     $cep = $_POST['cep'];
     $estado = $_POST['estado'];
-    if ($nome != "" && $email != "" && $rua != "" && $bairro != "" && $cidade != "" && $cep != "" && $estado != "") {
-        if (alterarCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $_SESSION['id']))
+    $telefone = $_POST['telefone'];
+    if ($nome != "" && $email != "" && $rua != "" && $bairro != "" && $cidade != "" && $cep != "" && $estado != "" && $telefone != "") {
+        if (alterarCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone, $_SESSION['id']))
             echo "Registro alterado com sucesso!";
         else
             echo "Erro ao alterar o registro!";
@@ -60,6 +61,11 @@ $dados = consultarClienteId($id);
             <div class="col-md-4">
                 <label for="estado" class="form-label"></label>
                 <input type="text" class="form-control" name="estado" placeholder="Estado" value="<?= $dados['estado'] ?>" >
+            </div>
+            <div class="row">
+            <div class="col-md-4">
+                <label for="telefone" class="form-label"></label>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="CEP" value="<?= $dados['telefone'] ?>" >
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-success mt-3">Salvar</button>

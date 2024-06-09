@@ -26,10 +26,10 @@
     }
 
     //Função que realiza a inserção de um produto
-    function inserirCliente($nome, $email, $rua, $bairro,$cidade,$cep,$estado){
+    function inserirCliente($nome, $email, $rua, $bairro,$cidade,$cep,$estado,$telefone){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado)VALUES (:nome, :email, :rua, :bairro, :cep, :estado)";
+            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado,telefone)VALUES (:nome, :email, :rua, :bairro, :cep, :estado, :telefone)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -41,6 +41,7 @@
             $stmt->bindValue(":cidade", $cidade);
             $stmt->bindValue(":cep", $cep);
             $stmt->bindValue(":estado", $estado);
+            $stmt->bindValue(":telefone", $telefone);
             //Executo a consulta, retornando o seu resultado
             return $stmt->execute();
         } catch (Exception $e){
@@ -53,7 +54,7 @@
     function consultarClienteId($id){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "SELECT * FROM produto WHERE id = :id";
+            $sql = "SELECT * FROM clientes WHERE id = :id";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -70,18 +71,22 @@
     }
 
     //Função que realiza a alteração de um produto
-    function alterarCliente($nome, $descricao, $valor, $categoria, $id){
+    function alterarCliente($nome, $email, $rua, $bairro,$cidade,$cep,$estado,$telefone, $id){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "UPDATE produto SET nome = :nome, descricao = :descricao, valor = :valor, categoria_id = :categoria WHERE id = :id";
+            $sql = "UPDATE clientes SET nome = :nome, email = :email, rua = :rua, bairro = :bairro = cidade, :cidade = cep, :cep = estado, :estado = telefone, :telefone WHERE id = :id";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
             $stmt = $conexao->prepare($sql);
             $stmt->bindValue(":nome", $nome);
-            $stmt->bindValue(":descricao", $descricao);
-            $stmt->bindValue(":valor", $valor);
-            $stmt->bindValue(":categoria", $categoria);
+            $stmt->bindValue(":email", $email);
+            $stmt->bindValue(":rua", $rua);
+            $stmt->bindValue(":bairro", $bairro);
+            $stmt->bindValue(":cidade", $cidade);
+            $stmt->bindValue(":cep", $cep);
+            $stmt->bindValue(":estado", $estado);
+            $stmt->bindValue(":estado", $telefone);
             $stmt->bindValue(":id", $id);
             //Executo a consulta, retornando o seu resultado
             return $stmt->execute();
@@ -95,7 +100,7 @@
     function excluirCliente($id){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "DELETE FROM produto WHERE id = :id";
+            $sql = "DELETE FROM clientes  WHERE id = :id";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro

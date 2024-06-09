@@ -20,15 +20,16 @@ USE `BDtabuleiro` ;
 CREATE TABLE IF NOT EXISTS `BDtabuleiro`.`clientes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(250) NOT NULL,
+  `email` VARCHAR(250) NOT NULL,
   `rua` VARCHAR(250) NOT NULL,
   `bairro` VARCHAR(250) NOT NULL,
   `cidade` VARCHAR(250) NOT NULL,
   `cep` VARCHAR(250) NOT NULL,
   `estado` VARCHAR(250) NOT NULL,
-  `email` VARCHAR(250) NOT NULL,
   `telefone` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = armscii8;
 
 
 -- -----------------------------------------------------
