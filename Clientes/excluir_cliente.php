@@ -1,52 +1,62 @@
 <?php
 require_once("../cabecalho.php");
+session_start();
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $_SESSION['id'] = $id;
+}
+if ($_POST) {
+    $id = $_SESSION['id'];
+    if (excluirCliente($_SESSION['id']))
+        header('Location: index.php');
+
+    else
+        echo "Erro ao excluir o registro!";
+}
+$dados = consultarClienteId($id);
 ?>
-<h3>Excluir Cliente</h3>
-<form>
+<h3>Alterar Cliente</h3>
+<form action="excluir_cliente.php" method="POST">
     <div class="row g-3">
         <div class="col-md-8">
-            <label for="inputEmail4" class="form-label">Nome</label>
-            <input type="text" class="form-control" disabled>
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" name="nome" value="<?= $dados['nome'] ?>" disabled>
         </div>
 
     </div>
     <form class="row g-3">
         <div class="col-md-8">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" disabled>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" value="<?= $dados['email'] ?>" disabled>
         </div>
 
         <div class="col-8">
-            <label for="inputAddress" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Rua, nº" disabled>
+            <label for="rua" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua, nº" value="<?= $dados['rua'] ?>" disabled>
         </div>
         <div class="col-8">
-            <label for="inputAddress2" class="form-label"></label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Bairro" disabled>
+            <label for="bairro" class="form-label"></label>
+            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="<?= $dados['bairro'] ?>" disabled>
         </div>
         <div class="col-md-6">
-            <label for="inputCity" class="form-label"></label>
-            <input type="text" class="form-control" id="Cidade" placeholder="Cidade" disabled>
-        </div>
-        <div class="col-md-2">
-            <label for="inputState" class="form-label"></label>
-            <select id="inputState" class="form-select" disabled>
-                <option selected>Estado</option>
-                <option>SP</option>
-            </select>
-        </div>
-        <div class="col-md-2">
-            <label for="inputZip" class="form-label"></label>
-            <input type="text" class="form-control" id="inputZip" placeholder="CEP" disabled>
-        </div>
-
+            <label for="cidade" class="form-label"></label>
+            <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Cidade" value="<?= $dados['cidade'] ?>" disabled>
         </div>
         <div class="row">
-            <div class="col">
-                <p class="mt-4">Deseja realmente Excluir?</p>
-                <button type="submit" class="btn btn-danger">Excluir</button>
+            <div class="col-md-4">
+                <label for="cep" class="form-label"></label>
+                <input type="text" class="form-control" name="cep" placeholder="CEP" value="<?= $dados['cep'] ?>" disabled>
             </div>
-        </div>
+            <div class="col-md-4">
+                <label for="estado" class="form-label"></label>
+                <input type="text" class="form-control" name="estado" placeholder="Estado" value="<?= $dados['estado'] ?>" disabled>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="mt-4">Deseja realmente Excluir?</p>
+                    <input type="submit" class="btn btn-danger" value="Excluir" name="btnExcluir">
+                </div>
+            </div>
     </form>
 </form>
 

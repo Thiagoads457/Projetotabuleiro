@@ -1,49 +1,69 @@
 <?php
 require_once("../cabecalho.php");
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    session_start();
+    $_SESSION['id'] = $id;
+} else
+    $id = $_SESSION['id'];
+if ($_POST) {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $rua = $_POST['rua'];
+    $bairro  = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $cep = $_POST['cep'];
+    $estado = $_POST['estado'];
+    if ($nome != "" && $email != "" && $rua != "" && $bairro != "" && $cidade != "" && $cep != "" && $estado != "") {
+        if (alterarCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $_SESSION['id']))
+            echo "Registro alterado com sucesso!";
+        else
+            echo "Erro ao alterar o registro!";
+    } else {
+        echo "Preencha todos os campos!";
+    }
+}
+$dados = consultarClienteId($id);
 ?>
 <h3>Alterar Cliente</h3>
-<form>
+<form action="" method="POST">
     <div class="row g-3">
         <div class="col-md-8">
-            <label for="inputEmail4" class="form-label">Nome</label>
-            <input type="text" class="form-control">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" name="nome" value="<?= $dados['nome'] ?>">
         </div>
 
     </div>
     <form class="row g-3">
         <div class="col-md-8">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" value="<?= $dados['email'] ?>">
         </div>
 
         <div class="col-8">
-            <label for="inputAddress" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Rua, nº">
+            <label for="rua" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua, nº" value="<?= $dados['rua'] ?>">
         </div>
         <div class="col-8">
-            <label for="inputAddress2" class="form-label"></label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Bairro">
+            <label for="bairro" class="form-label"></label>
+            <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" value="<?= $dados['bairro'] ?>">
         </div>
         <div class="col-md-6">
-            <label for="inputCity" class="form-label"></label>
-            <input type="text" class="form-control" id="Cidade" placeholder="Cidade">
+            <label for="cidade" class="form-label"></label>
+            <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Cidade" value="<?= $dados['cidade'] ?>">
         </div>
-        <div class="col-md-2">
-            <label for="inputState" class="form-label"></label>
-            <select id="inputState" class="form-select">
-                <option selected>Estado</option>
-                <option>SP</option>
-            </select>
-        </div>
-        <div class="col-md-2">
-            <label for="inputZip" class="form-label"></label>
-            <input type="text" class="form-control" id="inputZip" placeholder="CEP">
-        </div>
-
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-success mt-3">Salvar</button>
-        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="cep" class="form-label"></label>
+                <input type="text" class="form-control" name="cep" placeholder="CEP" value="<?= $dados['cep'] ?>">
+            </div>
+            <div class="col-md-4">
+                <label for="estado" class="form-label"></label>
+                <input type="text" class="form-control" name="estado" placeholder="Estado" value="<?= $dados['estado'] ?>" >
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-success mt-3">Salvar</button>
+            </div>
     </form>
 </form>
 

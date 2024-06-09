@@ -25,19 +25,19 @@ require_once("../cabecalho.php");
                 </thead>
                 <tbody>
                     <?php
-                        #$linhas = retornarProdutos();
-                        #while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
+                        $linhas = retornarCliente();
+                        while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
                     ?>
                     <tr>
                         <td><?= $l['nome']?></td>
                         <td><?= $l['email']?></td>
                         <td>
-                            <a href="alterar_cliente.php" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
-                            <a href="excluir_cliente.php" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
+                            <a href="alterar_cliente.php?id=<?= $l['id'] ?>" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
+                            <a href="excluir_cliente.php?id=<?= $l['id'] ?>" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>
                         </td>
                     </tr>
                     <?php
-                        #}
+                        }
                     ?>
                     
 

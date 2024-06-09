@@ -12,56 +12,54 @@ require_once("../cabecalho.php");
     </div>
     <form class="row g-3">
         <div class="col-md-8">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email">
         </div>
-        
+
         <div class="col-8">
-            <label for="inputAddress" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Rua, nº">
+            <label for="rua" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="rua" placeholder="Rua, nº">
         </div>
         <div class="col-8">
-            <label for="inputAddress2" class="form-label"></label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Bairro">
+            <label for="bairro" class="form-label"></label>
+            <input type="text" class="form-control" id="cidade" placeholder="Bairro">
         </div>
-        <div class="col-md-6">
-            <label for="inputCity" class="form-label"></label>
+        <div class="col-md-8">
+            <label for="cidade" class="form-label"></label>
             <input type="text" class="form-control" id="Cidade" placeholder="Cidade">
         </div>
-        <div class="col-md-2">
-            <label for="inputState" class="form-label"></label>
-            <select id="inputState" class="form-select">
-                <option selected>Estado</option>
-                <option>SP</option>
-            </select>
-        </div>
-        <div class="col-md-2">
-            <label for="inputZip" class="form-label"></label>
-            <input type="text" class="form-control" id="inputZip" placeholder="CEP">
-        </div>
-        
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
-        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="cep" class="form-label"></label>
+                <input type="text" class="form-control" placeholder="CEP">
+            </div>
+            <div class="col-md-4">
+                <label for="estado" class="form-label"></label>
+                <input type="text" class="form-control" placeholder="Estado">
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+            </div>
     </form>
 </form>
-
 
 <?php
 if ($_POST) {
     $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-    $valor = $_POST['valor'];
-    $categoria = $_POST['categoria'];
-    if ($nome != "" && $descricao != "" && $valor != "" && $categoria != "") {
-        if (inserirProduto($nome, $descricao, $valor, $categoria))
+    $email = $_POST['email'];
+    $rua = $_POST['rua'];
+    $bairro  = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $cep = $_POST['cep'];
+    $estado = $_POST['estado'];
+    if ($nome != "" && $email != "" && $rua != "" && $bairro != "" && $cidade != "" && $cep != "" && $estado != "") {
+        if (inserirCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado))
             echo "Registro inserido com sucesso!";
         else
-            echo "Erro ao inserir o registro";
+            echo "Erro ao inserir o registro!";
     } else {
         echo "Preencha todos os campos!";
     }
 }
-
 require_once("../rodape.html");
