@@ -12,9 +12,9 @@ if ($_POST) {
     $ano = $_POST['ano'];
     if ($nome != "" && $pais != "" && $ano != "") {
         if (alterarFabricante($nome, $pais, $ano, $_SESSION['id']))
-            echo "Registro inserido com sucesso!";
+            echo "Registro alterado com sucesso!";
         else
-            echo "Erro ao inserir o registro!";
+            echo "Erro ao alterar o registro!";
     } else {
         echo "Preencha todos os campos!";
     }
@@ -29,10 +29,10 @@ $dados = consultarFabricanteId($id);
             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Fabricante" value="<?= $dados['nome'] ?>">
         </div>
         <div class="col">
-            <input type="text" class="form-control" id="pais" name="pais" placeholder="País de Origem" value="<?= $dados['nome'] ?>">
+            <input type="text" class="form-control" id="pais" name="pais" placeholder="País de Origem" value="<?= $dados['pais'] ?>">
         </div>
         <div class="col">
-            <input type="text" class="form-control" id="ano" name="ano" placeholder="Ano de Fundação" value="<?= $dados['nome'] ?>">
+            <input type="text" class="form-control" id="ano" name="ano" placeholder="Ano de Fundação" value="<?= $dados['ano'] ?>">
         </div>
 
         <div class="col-12">

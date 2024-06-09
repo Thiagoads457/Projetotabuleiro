@@ -221,7 +221,7 @@
             $conexao = conectarBanco();
             //Executo a consulta, retornando o seu resultado
             return $conexao->query($sql);
-        } catch (Exception $e) {
+        } catch (Exception $e){
             //Caso aconteça algum erro, retorno o valor 0
             return 0;
         }
@@ -292,7 +292,7 @@
     function excluirFabricante($id){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "DELETE FROM eventos  WHERE id = :id";
+            $sql = "DELETE FROM fabricantes  WHERE id = :id";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -304,31 +304,118 @@
             //Caso aconteça algum erro, retorno o valor 0
             return 0;
         }
+    }
 
 
-
-
-
-
-
-
+        function retornarJogo(){
+            try {
+                //Defino uma variável para declarar o SQL a ser executado
+                $sql = "SELECT * FROM jogos";
+                //Realizo a conexão com o banco de dados
+                $conexao = conectarBanco();
+                //Executo a consulta, retornando o seu resultado
+                return $conexao->query($sql);
+            } catch (Exception $e){
+                //Caso aconteça algum erro, retorno o valor 0
+                return 0;
+            }
+        }
+    
+        //Função que realiza a inserção de um produto
+        function inserirJogo($nome, $preco, $genero){
+            try{ 
+                //Defino uma variável para declarar o SQL a ser executado
+                $sql = "INSERT INTO jogos (nome, preco, genero)VALUES (:nome, :preco, :genero)";
+                //Realizo a conexão com o banco de dados
+                $conexao = conectarBanco();
+                //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindValue(":nome", $nome);
+                $stmt->bindValue(":data", $preco);
+                $stmt->bindValue(":local", $genero);
+                
+                //Executo a consulta, retornando o seu resultado
+                return $stmt->execute();
+            } catch (Exception $e){
+                //Caso aconteça algum erro, retorno o valor 0
+                return 0;
+            }
+        }
+    
+        //Para poder alterar ou excluir um registro, precisamos consultar o registro pela sua chave primária (id)
+        function consultarJogoId($id){
+            try{ 
+                //Defino uma variável para declarar o SQL a ser executado
+                $sql = "SELECT * FROM jogos WHERE id = :id";
+                //Realizo a conexão com o banco de dados
+                $conexao = conectarBanco();
+                //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindValue(":id", $id);
+                //Executo a consulta
+                $stmt->execute();
+                //Retorno o registro já em formato de ARRAY
+                return $stmt->fetch();
+            } catch (Exception $e){
+                //Caso aconteça algum erro, retorno o valor 0
+                return 0;
+            }
+        }
+    
+        //Função que realiza a alteração de um produto
+        function alterarJogo($nome, $preco, $genero,$id){
+            try{ 
+                //Defino uma variável para declarar o SQL a ser executado
+                $sql = "UPDATE jogos SET nome = :nome, preco = :preco, genero = :genero WHERE id = :id";
+                //Realizo a conexão com o banco de dados
+                $conexao = conectarBanco();
+                //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindValue(":nome", $nome);
+                $stmt->bindValue(":data", $preco);
+                $stmt->bindValue(":local", $genero);
+                $stmt->bindValue(":id", $id);
+                //Executo a consulta, retornando o seu resultado
+                return $stmt->execute();
+            } catch (Exception $e){
+                //Caso aconteça algum erro, retorno o valor 0
+                return 0;
+            }
+        }
+        //Função que realiza a exclusão de um produto
+        function excluirJogo($id){
+            try{ 
+                //Defino uma variável para declarar o SQL a ser executado
+                $sql = "DELETE FROM jogos  WHERE id = :id";
+                //Realizo a conexão com o banco de dados
+                $conexao = conectarBanco();
+                //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindValue(":id", $id);
+                //Executo a consulta, retornando o seu resultado
+                return $stmt->execute();
+            } catch (Exception $e){
+                //Caso aconteça algum erro, retorno o valor 0
+                return 0;
+            }
+        }
     #INSERT INTO categoria (descricao) VALUES ("Categoria 1"), ("Categoria 2"), ("Categoria 3")
 
     /*Existe uma relação da tabela categoria com a tabela produto. Portanto, preciso buscar todas as
     categorias do banco de dados para poder relacionar com os registros de produtos na minha aplicação
     A função abaixo faz essa busca e retorna todos os registros de categorias*/
-    function retornar(){
+    function retornarGenero(){
         try {
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "SELECT * FROM categoria";
+            $sql = "SELECT * FROM generos";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Executo a consulta, retornando o seu resultado
             return $conexao->query($sql);
-        } catch (Exception $e) {
+        } catch (Exception $e){
             //Caso aconteça algum erro, retorno o valor 0
             return 0;
         }
     }
 
-}
+        

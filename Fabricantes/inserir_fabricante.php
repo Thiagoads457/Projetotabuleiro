@@ -27,7 +27,7 @@ if ($_POST) {
     $pais = $_POST['pais'];
     $ano = $_POST['ano'];
     if ($nome != "" && $pais != "" && $ano != "" ) {
-        if (inserirFabricante($nome, $pais, $ano,))
+        if (inserirFabricante($nome, $pais, $ano))
             echo "Registro inserido com sucesso!";
         else
             echo "Erro ao inserir o registro!";

@@ -37,7 +37,7 @@ require_once("../cabecalho.php");
                         </td>
                     </tr>
                     <?php
-                        }
+                    }
                     ?>
                     
 
