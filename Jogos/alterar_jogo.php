@@ -10,7 +10,7 @@ if ($_POST) {
     $nome = $_POST['nome'];
     $preco = $_POST['preco'];
     $genero = $_POST['genero'];
-    if ($nome != "" && $preco != "" && $genero != "") {
+    if ($nome != "" &&$preco != "" &&$genero != "") {
         if (alterarJogo($nome, $preco, $genero, $_SESSION['id']))
             echo "Registro alterado com sucesso!";
         else

@@ -22,7 +22,7 @@ if ($_POST) {
 $dados = consultarFabricanteId($id);
 ?>
 
-<h3>Inserir Fabricante</h3>
+<h3>Alterar Fabricante</h3>
 <form action="" method="POST">
     <div class="row">
         <div class="col">

@@ -16,7 +16,7 @@ if ($_POST) {
 $dados = consultarJogoId($id);
 ?>
 
-<h3><i class="bi bi-arrow-repeat"></i>Alterar Jogos</h3>
+<h3><i class="bi bi-arrow-repeat"></i>Exluir Jogos</h3>
 <form action="" method="POST">
     <div class="row">
         <div class="col">
@@ -26,7 +26,7 @@ $dados = consultarJogoId($id);
             <input type="text" class="form-control" id="preco" name="preco" placeholder="Preço" value="<?= $dados['preco'] ?>" disabled>
         </div>
         <div class="col">
-            <input type="text" class="form-control" id="genero" name="genero" placeholder="Gênero" disabled>
+            <input type="text" class="form-control" id="genero" name="genero" placeholder="Gênero" value="<?= $dados['genero'] ?>" disabled>
         </div>
         <div class="row">
             <div class="col">

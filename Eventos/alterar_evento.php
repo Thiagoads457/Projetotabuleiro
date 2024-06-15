@@ -23,7 +23,7 @@ $dados = consultarEventoId($id);
 
 ?>
 
-<h3>Inserir Eventos</h3>
+<h3>Alterar Eventos</h3>
 <form action="" method="POST">
     <div class="row">
         <div class="col">
@@ -37,7 +37,7 @@ $dados = consultarEventoId($id);
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+            <button type="submit" class="btn btn-primary mt-3">Alterar</button>
         </div>
     </div>
 

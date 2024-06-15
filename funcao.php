@@ -29,7 +29,7 @@
     function inserirCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado, telefone)VALUES (:nome, :email, :rua, :bairro, :cidade, :cep, :estado, :telefone)";
+            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado, telefone) VALUES (:nome, :email, :rua, :bairro, :cidade, :cep, :estado, :telefone)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -71,7 +71,7 @@
     }
 
     //Função que realiza a alteração de um produto
-    function alterarCliente($nome, $email, $rua, $bairro,$cidade,$cep,$estado,$telefone, $id){
+    function alterarCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone, $id){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
             $sql = "UPDATE clientes SET nome = :nome, email = :email, rua = :rua, bairro = :bairro, cidade = :cidade, cep = :cep, estado = :estado, telefone = :telefone WHERE id = :id";
@@ -117,7 +117,7 @@
 
 
 
-
+   
     function retornarEvento(){
         try {
             //Defino uma variável para declarar o SQL a ser executado
