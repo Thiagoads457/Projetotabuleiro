@@ -29,8 +29,8 @@ if ($_POST) {
     $local = $_POST['local'];
     
 
-    if ($nome != "" && $data != "" && $local != ""&&$cliente ) {
-        if (inserirEvento($nome, $data, $local, $cliente))
+    if ($nome != "" && $data != "" && $local != "" ) {
+        if (inserirEvento($nome, $data, $local, ))
             echo "Registro inserido com sucesso!";
         else
             echo "Erro ao inserir o registro!";
