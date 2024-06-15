@@ -4,7 +4,7 @@
     //Função para conexão com o banco de dados
     function conectarBanco(){
         //Instancio o meu objeto PDO que fornece as funções para manipulação dos dados
-        $conexao = new PDO("mysql:host=localhost; dbname=BDtabuleiro", "root", "Jl@161215");
+        $conexao = new PDO("mysql:host=localhost; dbname=BDtabuleiro", "root", "");
         return $conexao;
     }
     /*Para poder alterar ou excluir os produtos, preciso consultar todos os registros do banco de dados
@@ -323,10 +323,10 @@
         }
     
         //Função que realiza a inserção de um produto
-        function inserirJogo($nome, $preco, $genero){
+        function inserirJogo($nome, $preco, $genero, $cliente){
             try{ 
                 //Defino uma variável para declarar o SQL a ser executado
-                $sql = "INSERT INTO jogos (nome, preco, genero)VALUES (:nome, :preco, :genero)";
+                $sql = "INSERT INTO jogos (nome, preco, genero, cliente)VALUES (:nome, :preco, :genero, :clientes_id)";
                 //Realizo a conexão com o banco de dados
                 $conexao = conectarBanco();
                 //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -334,6 +334,7 @@
                 $stmt->bindValue(":nome", $nome);
                 $stmt->bindValue(":preco", $preco);
                 $stmt->bindValue(":genero", $genero);
+                $stmt->bindValue(":clientes_id", $cliente);
                 
                 //Executo a consulta, retornando o seu resultado
                 return $stmt->execute();
