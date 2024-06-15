@@ -16,6 +16,7 @@
             $sql = "SELECT * id, nome, email FROM clientes";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
+                     
             //Executo a consulta, retornando o seu resultado
             return $conexao->query($sql);
         } catch (Exception $e) {
@@ -25,10 +26,10 @@
     }
 
     //Função que realiza a inserção de um produto
-    function inserirCliente($nome, $email, $rua, $bairro,$cidade,$cep,$estado,$telefone){
+    function inserirCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado,telefone)VALUES (:nome, :email, :rua, :bairro, :cep, :estado, :telefone)";
+            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado, telefone) VALUES (:nome, :email, :rua, :bairro, :cidade :cep, :estado, :telefone)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -135,7 +136,7 @@
     function inserirEvento($nome, $data, $local){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO eventos (nome, data, local)VALUES (:nome, :data, :local)";
+            $sql = "INSERT INTO eventos (nome, data, local) VALUES (:nome, :data, :local)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
