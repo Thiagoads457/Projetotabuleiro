@@ -29,7 +29,7 @@
     function inserirCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado, telefone) VALUES (:nome, :email, :rua, :bairro, :cidade, :cep, :estado, :telefone)";
+            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado, telefone)VALUES (:nome, :email, :rua, :bairro, :cidade, :cep, :estado, :telefone)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -332,8 +332,8 @@
                 //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
                 $stmt = $conexao->prepare($sql);
                 $stmt->bindValue(":nome", $nome);
-                $stmt->bindValue(":data", $preco);
-                $stmt->bindValue(":local", $genero);
+                $stmt->bindValue(":preco", $preco);
+                $stmt->bindValue(":genero", $genero);
                 
                 //Executo a consulta, retornando o seu resultado
                 return $stmt->execute();
@@ -373,8 +373,8 @@
                 //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
                 $stmt = $conexao->prepare($sql);
                 $stmt->bindValue(":nome", $nome);
-                $stmt->bindValue(":data", $preco);
-                $stmt->bindValue(":local", $genero);
+                $stmt->bindValue(":preco", $preco);
+                $stmt->bindValue(":genero", $genero);
                 $stmt->bindValue(":id", $id);
                 //Executo a consulta, retornando o seu resultado
                 return $stmt->execute();
@@ -400,23 +400,5 @@
                 return 0;
             }
         }
-    #INSERT INTO categoria (descricao) VALUES ("Categoria 1"), ("Categoria 2"), ("Categoria 3")
-
-    /*Existe uma relação da tabela categoria com a tabela produto. Portanto, preciso buscar todas as
-    categorias do banco de dados para poder relacionar com os registros de produtos na minha aplicação
-    A função abaixo faz essa busca e retorna todos os registros de categorias*/
-    function retornarGenero(){
-        try {
-            //Defino uma variável para declarar o SQL a ser executado
-            $sql = "SELECT * FROM generos";
-            //Realizo a conexão com o banco de dados
-            $conexao = conectarBanco();
-            //Executo a consulta, retornando o seu resultado
-            return $conexao->query($sql);
-        } catch (Exception $e){
-            //Caso aconteça algum erro, retorno o valor 0
-            return 0;
-        }
-    }
-
+   
         

@@ -15,7 +15,7 @@ if ($_POST) {
     $cep = $_POST['cep'];
     $estado = $_POST['estado'];
     $telefone = $_POST['telefone'];
-    if ($nome != "" && $email != "" && $rua != "" && $bairro != "" && $cidade != "" && $cep != "" && $estado != "" && $telefone != "") {
+    if ($nome != "" &&$email != "" &&$rua != "" &&$bairro != "" &&$cidade != "" &&$cep != "" &&$estado != "" &&$telefone != "") {
         if (alterarCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone, $_SESSION['id']))
             echo "Registro alterado com sucesso!";
         else
@@ -26,7 +26,7 @@ if ($_POST) {
 }
 $dados = consultarClienteId($id);
 ?>
-<h3>Alterar Cliente</h3>
+<h3>Alterar Clientes</h3>
 <form action="" method="POST">
     <div class="row g-3">
         <div class="col-md-8">
@@ -68,7 +68,7 @@ $dados = consultarClienteId($id);
                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="CEP" value="<?= $dados['telefone'] ?>" >
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-success mt-3">Salvar</button>
+                <button type="submit" class="btn btn-success mt-3">Alterar</button>
             </div>
     </form>
 </form>

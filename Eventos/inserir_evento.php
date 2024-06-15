@@ -30,7 +30,7 @@ if ($_POST) {
     
 
     if ($nome != "" && $data != "" && $local != "" ) {
-        if (inserirEvento($nome, $data, $local, ))
+        if (inserirEvento($nome, $data, $local, $cidade))
             echo "Registro inserido com sucesso!";
         else
             echo "Erro ao inserir o registro!";

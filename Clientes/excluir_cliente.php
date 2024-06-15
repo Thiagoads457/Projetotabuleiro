@@ -15,7 +15,7 @@ if ($_POST) {
 }
 $dados = consultarClienteId($id);
 ?>
-<h3>Alterar Cliente</h3>
+<h3>Excluir Clientes</h3>
 <form action="excluir_cliente.php" method="POST">
     <div class="row g-3">
         <div class="col-md-8">

@@ -16,7 +16,7 @@ require_once("../cabecalho.php");
             <th>Nome</th>
             <th>Data</th>
             <th>Local</th>
-            <th>Cliente</th>
+            
 
         </tr>
     </thead>
@@ -29,7 +29,7 @@ require_once("../cabecalho.php");
             <td><?= $l['nome'] ?></td>
             <td><?= $l['data'] ?></td>
             <td><?= $l['local'] ?></td>
-            <td><?= $l['cliente_id'] ?></td>
+            
             <td>
                 <a href="alterar_evento.php?id=<?= $l['id'] ?>" <i class="bi bi-pencil" style="font-size: 20px; color:green"></i></a>
                 <a href="excluir_evento.php?id=<?= $l['id'] ?>" <i class="bi bi-trash3" style="font-size: 20px; color:red"></i></a>

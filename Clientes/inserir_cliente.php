@@ -13,34 +13,34 @@ require_once("../cabecalho.php");
     <div class="row g-3">
         <div class="col-md-8">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" >
         </div>
 
         <div class="col-8">
             <label for="rua" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua, nº" required>
+            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua, nº">
         </div>
         <div class="col-8">
             <label for="bairro" class="form-label"></label>
-            <input type="text" class="form-control" id="cidade" name="bairro" placeholder="Bairro" required>
+            <input type="text" class="form-control" id="cidade" name="bairro" placeholder="Bairro" >
         </div>
         <div class="col-md-8">
             <label for="cidade" class="form-label"></label>
-            <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Cidade" required>
+            <input type="text" class="form-control" id="Cidade" name="cidade" placeholder="Cidade" >
         </div>
         <div class="row">
             <div class="col-md-4">
                 <label for="cep" class="form-label"></label>
-                <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" required>
+                <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" >
             </div>
             <div class="col-md-4">
                 <label for="estado" class="form-label"></label>
-                <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" required>
+                <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado" >
             </div>
 
             <div class="col-md-8">
                 <label for="telefone" class="form-label"></label>
-                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" >
             </div>
 
             <div class="col-12">
@@ -59,7 +59,7 @@ if ($_POST) {
     $cep = $_POST['cep'];
     $estado = $_POST['estado'];
     $telefone = $_POST['telefone'];
-    if ($nome != "" && $email != "" && $rua != "" && $bairro != "" && $cidade != "" && $cep != "" && $estado != "" && $telefone != "") {
+    if ($nome != "" &&$email != "" &&$rua != "" &&$bairro != "" &&$cidade != "" &&$cep != "" &&$estado != "" &&$telefone != "") {
         if (inserirCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone))
             echo "Registro inserido com sucesso!";
         else
