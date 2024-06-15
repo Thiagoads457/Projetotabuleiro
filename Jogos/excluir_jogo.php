@@ -30,6 +30,7 @@ $dados = consultarJogoId($id);
         </div>
         <div class="row">
             <div class="col">
+            <p class="mt-4">Deseja realmente Excluir?</p>
                 <input type="submit" class="btn btn-danger" value="Excluir" name="btnExcluir">
             </div>
         </div>

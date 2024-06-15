@@ -323,7 +323,7 @@
         function inserirJogo($nome, $preco, $genero, $cliente){
             try{ 
                 //Defino uma variável para declarar o SQL a ser executado
-                $sql = "INSERT INTO jogos (nome, preco, genero, cliente)VALUES (:nome, :preco, :genero, :clientes_id)";
+                $sql = "INSERT INTO jogos (nome, preco, genero, clientes_id)VALUES (:nome, :preco, :genero, :clientes_id)";
                 //Realizo a conexão com o banco de dados
                 $conexao = conectarBanco();
                 //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro

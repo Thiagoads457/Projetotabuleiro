@@ -2,7 +2,8 @@
     require_once("cabecalho.php");
 ?>
 
-    <h1>Sistema PHP + MySql</h1>
+    <h1>JogosdeTabuleiro.com</h1>
+    <img src="xadrez.jpg" class="img-fluid" alt="...">
 
 <?php
     require_once("rodape.html");

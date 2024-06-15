@@ -6,8 +6,6 @@ require_once("../cabecalho.php");
 
 <a href="inserir_jogo.php" <i class="bi bi-plus-circle btn btn-primary mt-3" </i> Jogos </a>
 
-
-
 <table class="mt-4 table table-hover table-striped" style="margin-left: -40px;">
 
 
@@ -41,6 +39,27 @@ require_once("../cabecalho.php");
 
 </table>
 
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../tab.jpg" class="d-block w-100" alt="tab">
+        </div>
+        <div class="carousel-item">
+            <img src="../tab2.jpg" class="d-block w-100" alt="tab">
+        </div>
+        <div class="carousel-item">
+            <img src="../tab3.jpg" class="d-block w-100" alt="tab">
+        </div>
+    </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
 <?php
 require_once("../rodape.html");
