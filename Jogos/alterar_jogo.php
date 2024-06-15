@@ -31,22 +31,13 @@ $dados = consultarJogoId($id);
         <div class="col">
             <input type="text" class="form-control" id="preco" name="preco" placeholder="Preço" value="<?= $dados['preco'] ?>">
         </div>
-        <div class="col-md-4">
-            <select class="form-select" id="genero" name="genero" placeholder="Gênero">
-            <option value="" disabled selected hidden>Gênero</option>
-                <?php
-                $linhas = retornarGenero();
-                while($l = $linhas->fetch(PDO::FETCH_ASSOC)){
-                    if ($l['id'] == $dados["categoria_id"])
-                        echo "<option selected value='{$l['id']}'>{$l['descricao']}</option>"; 
-                    else 
-                        echo "<option value='{$l['id']}'>{$l['descricao']}</option>"; 
-                }
-                ?>
-            </select>
-
-
+        <div class="col">
+            <input type="text" class="form-control" id="genero" name="genero" placeholder="Gênero" value="<?= $dados['genero'] ?>">
         </div>
+        
+
+
+        
         <div class="col-12">
             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
         </div>

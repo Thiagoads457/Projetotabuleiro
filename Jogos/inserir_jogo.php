@@ -11,19 +11,11 @@ require_once("../cabecalho.php");
         <div class="col">
             <input type="text" class="form-control" id="preco" name="preco" placeholder="Preço">
         </div>
-        <div class="col-md-4">
-            <select class="form-select" id="genero" name="genero" placeholder="Gênero">
-            <option value="" disabled selected hidden>Gênero</option>
-                <?php
-                $linhas = retornarGenero();
-                while ($l = $linhas->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<option value='{$l['id']}'>{$l['descricao']}</option>";
-                }
-                ?>
-            </select>
 
-
+        <div class="col">
+            <input type="text" class="form-control" id="genero" name="genero" placeholder="Gênero">
         </div>
+        
         <div class="col-12">
             <button type="submit" class="btn btn-primary mt-3">Salvar</button>
         </div>
