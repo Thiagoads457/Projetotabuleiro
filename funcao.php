@@ -4,7 +4,7 @@
     //Função para conexão com o banco de dados
     function conectarBanco(){
         //Instancio o meu objeto PDO que fornece as funções para manipulação dos dados
-        $conexao = new PDO("mysql:host=localhost; dbname=BDtabuleiro", "root", "");
+        $conexao = new PDO("mysql:host=localhost; dbname=BDtabuleiro", "root", "Jl@161215");
         return $conexao;
     }
     /*Para poder alterar ou excluir os produtos, preciso consultar todos os registros do banco de dados
