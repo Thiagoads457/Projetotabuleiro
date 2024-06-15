@@ -4,7 +4,7 @@
     //Função para conexão com o banco de dados
     function conectarBanco(){
         //Instancio o meu objeto PDO que fornece as funções para manipulação dos dados
-        $conexao = new PDO("mysql:host=localhost; dbname=BDtabuleiro", "root", "Jl@161215");
+        $conexao = new PDO("mysql:host=localhost; dbname=BDtabuleiro", "root", "");
         return $conexao;
     }
     /*Para poder alterar ou excluir os produtos, preciso consultar todos os registros do banco de dados
@@ -13,7 +13,7 @@
     function retornarCliente(){
         try {
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "SELECT id, nome, email FROM clientes";
+            $sql = "SELECT * id, nome, email FROM clientes";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Executo a consulta, retornando o seu resultado
@@ -231,15 +231,14 @@
     function inserirFabricante($nome, $pais, $ano){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO fabricantes (nome, pais, ano)VALUES (:nome, :pais, :ano)";
+            $sql = "INSERT INTO fabricantes (nome, pais, ano) VALUES (:nome, :pais, :ano)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
             $stmt = $conexao->prepare($sql);
             $stmt->bindValue(":nome", $nome);
-            $stmt->bindValue(":data", $pais);
-            $stmt->bindValue(":local", $ano);
-            
+            $stmt->bindValue(":pais", $pais);
+            $stmt->bindValue(":ano", $ano);
             //Executo a consulta, retornando o seu resultado
             return $stmt->execute();
         } catch (Exception $e){
@@ -278,8 +277,8 @@
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
             $stmt = $conexao->prepare($sql);
             $stmt->bindValue(":nome", $nome);
-            $stmt->bindValue(":data", $pais);
-            $stmt->bindValue(":local", $ano);
+            $stmt->bindValue(":pais", $pais);
+            $stmt->bindValue(":ano", $ano);
             $stmt->bindValue(":id", $id);
             //Executo a consulta, retornando o seu resultado
             return $stmt->execute();
