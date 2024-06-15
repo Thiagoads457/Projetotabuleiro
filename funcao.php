@@ -13,7 +13,7 @@
     function retornarCliente(){
         try {
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "SELECT * id, nome, email FROM clientes";
+            $sql = "SELECT id, nome, email FROM clientes";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
                      
@@ -29,7 +29,7 @@
     function inserirCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado, telefone) VALUES (:nome, :email, :rua, :bairro, :cidade :cep, :estado, :telefone)";
+            $sql = "INSERT INTO clientes (nome, email, rua, bairro, cidade, cep, estado, telefone) VALUES (:nome, :email, :rua, :bairro, :cidade, :cep, :estado, :telefone)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -74,7 +74,7 @@
     function alterarCliente($nome, $email, $rua, $bairro,$cidade,$cep,$estado,$telefone, $id){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "UPDATE clientes SET nome = :nome, email = :email, rua = :rua, bairro = :bairro = cidade, :cidade = cep, :cep = estado, :estado = telefone, :telefone WHERE id = :id";
+            $sql = "UPDATE clientes SET nome = :nome, email = :email, rua = :rua, bairro = :bairro, cidade = :cidade, cep = :cep, estado = :estado, telefone = :telefone WHERE id = :id";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -86,7 +86,7 @@
             $stmt->bindValue(":cidade", $cidade);
             $stmt->bindValue(":cep", $cep);
             $stmt->bindValue(":estado", $estado);
-            $stmt->bindValue(":estado", $telefone);
+            $stmt->bindValue(":telefone", $telefone);
             $stmt->bindValue(":id", $id);
             //Executo a consulta, retornando o seu resultado
             return $stmt->execute();
@@ -133,10 +133,10 @@
     }
 
     //Função que realiza a inserção de um produto
-    function inserirEvento($nome, $data, $local){
+    function inserirEvento($nome, $data, $local, $cliente){
         try{ 
             //Defino uma variável para declarar o SQL a ser executado
-            $sql = "INSERT INTO eventos (nome, data, local) VALUES (:nome, :data, :local)";
+            $sql = "INSERT INTO eventos (nome, data, local, clientes_id) VALUES (:nome, :data, :local, :clientes_id)";
             //Realizo a conexão com o banco de dados
             $conexao = conectarBanco();
             //Inicio a preparação do SQL para poder substituir os APELIDOS pelos valores passados por parâmetro
@@ -144,6 +144,7 @@
             $stmt->bindValue(":nome", $nome);
             $stmt->bindValue(":data", $data);
             $stmt->bindValue(":local", $local);
+            $stmt->bindValue(":clientes_id", $cliente);
             
             //Executo a consulta, retornando o seu resultado
             return $stmt->execute();
