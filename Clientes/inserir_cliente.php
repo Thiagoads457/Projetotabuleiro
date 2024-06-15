@@ -59,7 +59,7 @@ if ($_POST) {
     $cep = $_POST['cep'];
     $estado = $_POST['estado'];
     $telefone = $_POST['telefone'];
-    if ($nome != "" &&$email != "" &&$rua != "" &&$bairro != "" &&$cidade != "" &&$cep != "" &&$estado != "" &&$telefone != "") {
+    if ($nome != "" && $email != "" && $rua != "" && $bairro != "" && $cidade != "" && $cep != "" && $estado != "" && $telefone != "") {
         if (inserirCliente($nome, $email, $rua, $bairro, $cidade, $cep, $estado, $telefone))
             echo "Registro inserido com sucesso!";
         else
